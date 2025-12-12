@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import productsRoutes from './src/routes/products-route.js';
 
 // Configuración de la aplicación
 const app = express();
@@ -14,42 +15,9 @@ app.get('/', (req, res) => {
 });
 
 
-// Datos de ejemplo
-const products = [
-    { id: 2, name: 'Producto 2', price: 200 },
-    { id: 1, name: 'Producto 1', price: 100 },
-    { id: 3, name: 'Producto 3', price: 300 },
-];
 
-
-// query params: /products?price=150
-app.get('/products' , (req, res) => {
-    const price = parseFloat(req.query.price);
-    if (!isNaN(price)) {
-        const filteredProducts = products.filter(p => p.price <= price);
-        res.json(filteredProducts);
-    } else {
-        res.json(products);
-    }
-});
-
-
-// path params: /products/1
-app.get('/products/:id', (req, res) => {
-    const productId = parseInt(req.params.id, 10);
-    const product = products.find(p => p.id == productId);
-    if (product) {
-        res.json(product);
-    } else {
-        res.status(404).send('Producto no encontrado');
-    }
-});
-
-
-// Otra ruta de ejemplo
-app.get('/otraCosa', (req, res) => {
-    res.send('Otra cosa');
-});
+// Rutas de productos
+app.use('/products', productsRoutes);
 
 
 // Middleware para manejar rutas no definidas   
@@ -63,3 +31,5 @@ app.listen(PORT, () => {
     console.log(`http://localhost:${PORT}`);
 });
 
+
+export default app;
