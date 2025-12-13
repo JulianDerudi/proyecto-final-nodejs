@@ -1,10 +1,11 @@
+import "dotenv/config";
 import express from 'express';
 import cors from 'cors';
 import productsRoutes from './src/routes/products-route.js';
 
 // Configuración de la aplicación
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3005;
 
 app.use(cors());
 app.use(express.json());
@@ -33,3 +34,6 @@ app.listen(PORT, () => {
 
 
 export default app;
+
+
+// base de datos firestore: https://console.firebase.google.com/project/proyecto-final-nodejs-28b6e/firestore/databases/-default-/data/~2Fproducts~2FdiZIHyNY8PNsJd5OhYWN?hl=es-419

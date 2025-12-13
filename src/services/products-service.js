@@ -1,52 +1,32 @@
-// Datos de ejemplo
-const products = [
-    { id: 2, name: 'Producto 2', price: 200 },
-    { id: 1, name: 'Producto 1', price: 100 },
-    { id: 3, name: 'Producto 3', price: 300 },
-];
+import e from 'express';
+import model from '../models/Product.js';
 
-export const getProducts = () => {
-    return products;
-}   
+// Servicio para obtener todos los productos
+export const getAllProductsService = async () => {
+    return await model.getAllProducts();
+};
 
-export const getProductById = (id) => {
-    return products.find(p => p.id === id);
-}   
+// Servicio para obtener un producto por su ID
+export const getProductByIdService = async (id) => {
+    return await model.getProductById(id);
+};
 
-export const getProductsByPrice = (price) => {
-    return products.filter(p => p.price <= price);
-}   
+// Servicio para crear un nuevo producto
+export const createProductService = async (data) => {
+    return await model.createProduct(data);
+};
 
-export const addProduct = (product) => {
-    const maxId = products.length ? Math.max(...products.map(p => p.id)) : 0;
-    const newProduct = { id: maxId + 1, ...product };
-    products.push(newProduct);
-    return newProduct;
-}   
-
-export const updateProduct = (id, updatedProduct) => {
-    const index = products.findIndex(p => p.id === id);
-    if (index !== -1) {
-        products[index] = { id, ...updatedProduct };
-        return true;
-    }   
-    return false;
-}  
-
-export const deleteProduct = (id) => {
-    const index = products.findIndex(p => p.id === id);
-    if (index !== -1) {
-        products.splice(index, 1);
-        return true;
-    }
-    return false;
-}
+// Servicio para eliminar un producto por su ID 
+export const deleteProductService = async (id) => {
+    return await model.deleteProduct(id);
+};
 
 export default {
-    getProducts,
-    getProductById,
-    getProductsByPrice,
-    addProduct,
-    updateProduct,
-    deleteProduct
+    getAllProductsService,
+    getProductByIdService,
+    createProductService,
+    deleteProductService
 };
+
+
+
