@@ -2,12 +2,16 @@ import "dotenv/config";
 import express from 'express';
 import cors from 'cors';
 import productsRoutes from './src/routes/products-route.js';
+import authRoutes from './src/routes/auth-route.js';
 
 // Configuración de la aplicación
 const app = express();
 const PORT = process.env.PORT || 3005;
 
+// Middleware CORS
 app.use(cors());
+
+// Middleware para parsear JSON
 app.use(express.json());
 
 // Ruta raíz
@@ -18,8 +22,9 @@ app.get('/', (req, res) => {
 
 
 // Rutas de productos
-app.use('/products', productsRoutes);
+app.use('/api/products', productsRoutes);
 
+app.use('/auth', authRoutes);
 
 // Middleware para manejar rutas no definidas   
 app.use((req, res, next) => {
@@ -36,4 +41,3 @@ app.listen(PORT, () => {
 export default app;
 
 
-// base de datos firestore: https://console.firebase.google.com/project/proyecto-final-nodejs-28b6e/firestore/databases/-default-/data/~2Fproducts~2FdiZIHyNY8PNsJd5OhYWN?hl=es-419

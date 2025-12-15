@@ -1,18 +1,22 @@
 import { Router } from "express";
 import { getProducts, getProductById, createProduct, updateProduct, deleteProduct } from "../controllers/products-controller.js";
+import { verifyToken } from "../middlewares/auth-middleware.js";
 
 const router = Router();
 
 // query params: /products?price=150
-router.get('/' , getProducts);
+router.get('/', verifyToken, getProducts);
 
 // path params: /products/1
-router.get('/:id', getProductById);
+router.get('/:id', verifyToken, getProductById);
 
-router.post('/', createProduct);
+// body params
+router.post('/create', verifyToken, createProduct);
 
-router.put('/:id', updateProduct);
+// body params + path params
+router.put('/:id', verifyToken, updateProduct);
 
-router.delete('/:id', deleteProduct);
+// path params
+router.delete('/:id', verifyToken, deleteProduct);
 
 export default router;
