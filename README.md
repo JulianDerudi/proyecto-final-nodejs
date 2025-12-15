@@ -78,6 +78,7 @@ http://localhost:3000
 
 
 ### 🧱 Arquitectura del Proyecto
+```
 src/
  ├── routes/
  │    ├── products-routes.js
@@ -96,7 +97,7 @@ src/
       └── auth-middleware.js
 index.js
 .env-example
-
+```
 
 
 ### 🔐 Autenticación
