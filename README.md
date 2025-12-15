@@ -97,18 +97,18 @@ src/
 
 La aplicación utiliza JWT (Bearer Token) para proteger las rutas de productos.
 
-# Login
+#### Login
 
 POST /auth/login
 
-# 📥 Body:
+#### 📥 Body:
 
 {
   "email": "usuario@test.com",
   "password": "123456"
 }
 
-# 📤 Respuesta:
+#### 📤 Respuesta:
 
 {
   "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
@@ -117,7 +117,7 @@ POST /auth/login
 
 ### 📡 Endpoints Disponibles
 
-# 📦 Productos
+#### 📦 Productos
 
 | Método | Endpoint             | Descripción                 | Protección |
 | ------ | -------------------- | --------------------------- | ---------- |
@@ -126,7 +126,7 @@ POST /auth/login
 | POST   | /api/products/create | Crear nuevo producto        | 🔒         |
 | DELETE | /api/products/:id    | Eliminar producto           | 🔒         |
 
-# 🔒 Requiere token JWT en el header:
+#### 🔒 Requiere token JWT en el header:
 
 Authorization: Bearer <token>
 
@@ -176,7 +176,7 @@ Los productos se almacenan en Firebase Firestore, utilizando una colección dedi
 
 ### 👤 Autor
 
-# Julián Derudi
+#### Julián Derudi
 📌 Portafolio: https://julianderudi.github.io/Portafolio/
 
 🔗 LinkedIn: https://www.linkedin.com/in/julian-derudi-730ba8343/
