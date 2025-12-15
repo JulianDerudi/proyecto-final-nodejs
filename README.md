@@ -78,24 +78,25 @@ http://localhost:3000
 
 
 ### 🧱 Arquitectura del Proyecto
-* src/
-*  ├── routes/
-*  │    ├── products-routes.js
-*  │    └── auth-routes.js
-*  ├── controllers/
-*  │    ├── products-controller.js
-*  │    └── auth-controller.js
-*  ├── services/
-*  │    ├── products-service.js
-*  │    └── auth-service.js
-*  ├── models/
-*  │    ├── Auth.js
-*  │    ├── Product.js
-*  │    └── firebase.js
-*  └── middlewares/
-*       └── auth-middleware.js
-* index.js
-* .env-example
+src/
+ ├── routes/
+ │    ├── products-routes.js
+ │    └── auth-routes.js
+ ├── controllers/
+ │    ├── products-controller.js
+ │    └── auth-controller.js
+ ├── services/
+ │    ├── products-service.js
+ │    └── auth-service.js
+ ├── models/
+ │    ├── Auth.js
+ │    ├── Product.js
+ │    └── firebase.js
+ └── middlewares/
+      └── auth-middleware.js
+index.js
+.env-example
+
 
 
 ### 🔐 Autenticación
