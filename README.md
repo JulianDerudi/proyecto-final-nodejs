@@ -50,12 +50,16 @@ $ npm install
 Crear un archivo .env en la raíz del proyecto con las siguientes variables:
 
 ``` bash
-PORT=3000
-JWT_SECRET=tu_secreto_jwt
+PORT=
+JWT_SECRET=
 
-FIREBASE_PROJECT_ID=xxxx
-FIREBASE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n"
-FIREBASE_CLIENT_EMAIL=xxxx@xxxx.iam.gserviceaccount.com
+FIREBASE_PROJECT_ID=
+FIREBASE_API_KEY=
+FIREBASE_AUTH_DOMAIN=
+FIREBASE_STORAGE_BUCKET=
+FIREBASE_MESSAGING_SENDER_ID=
+FIREBASE_APP_ID=
+
 ```
 
 ⚠️ El archivo .env no debe subirse al repositorio.
@@ -74,23 +78,24 @@ http://localhost:3000
 
 
 ### 🧱 Arquitectura del Proyecto
-src/
-├── routes/
-│   ├── products.routes.js
-│   └── auth.routes.js
-├── controllers/
-│   ├── products.controller.js
-│   └── auth.controller.js
-├── services/
-│   ├── products.service.js
-│   └── auth.service.js
-├── models/
-│   └── product.model.js
-├── middlewares/
-│   └── auth.middleware.js
-├── config/
-│   └── firebase.js
-└── index.js
+├── src/
+│    ├── routes/
+│    │    ├── products-routes.js
+│    │    └── auth-routes.js
+│    ├── controllers/
+│    │    ├── products-controller.js
+│    │    └── auth-controller.js
+│    ├── services/
+│    │    ├── products-service.js
+│    │    └── auth-service.js
+│    ├── models/
+│    │    ├── Auth.js
+│    │    ├── Product.js
+│    │    └── firebase.js
+│    └── middlewares/
+│         └── auth-middleware.js
+├── index.js
+└── .env-example
 
 
 ### 🔐 Autenticación
@@ -124,6 +129,7 @@ POST /auth/login
 | GET    | /api/products        | Obtener todos los productos | 🔒         |
 | GET    | /api/products/:id    | Obtener producto por ID     | 🔒         |
 | POST   | /api/products/create | Crear nuevo producto        | 🔒         |
+| PUT    | /api/products/:id    | Modificar un producto       | 🔒         |
 | DELETE | /api/products/:id    | Eliminar producto           | 🔒         |
 
 #### 🔒 Requiere token JWT en el header:
